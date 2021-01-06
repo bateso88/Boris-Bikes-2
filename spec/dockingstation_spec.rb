@@ -7,11 +7,18 @@ describe DockingStation do
     it {is_expected.to respond_to :release_bike}
 
     it "should return a bike" do
-        expect(DockingStation.new.release_bike).to be_a Bike
+        bike = subject.release_bike
+        expect(bike).to be_working
     end
 
-    it "should be a working bike" do
-        expect(Bike.new.working?).to eq true
-    end
   end
+
+it "dock something" do    
+  bicycle = Bike.new
+  subject.dock(bicycle)
+  expect(subject.bike).to eq bicycle
+end
+
+  
+
 end
