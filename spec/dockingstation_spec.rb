@@ -8,7 +8,7 @@ describe DockingStation do
     it "should return a bike if there is a bike" do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.release_bike[0]).to be_working
+      expect(subject.release_bike).to be_working
     end
 
     it "should return an error if there is no bike" do
@@ -17,7 +17,7 @@ describe DockingStation do
 
   end
   context "dock bike function" do
-    it do
+    it " " do
       bike = Bike.new
       subject.dock(bike)
       expect(subject.bike_storage).to include bike
