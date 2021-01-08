@@ -2,6 +2,17 @@ require "DockingStation"
 
 describe DockingStation do
 
+  context "initialising number of docks" do
+    it "tests if it is possible to set number of docks to 15" do
+      docking_station = DockingStation.new(15)
+    end
+
+    it "defaults to 20 spots" do
+      docking_station = DockingStation.new
+      expect(docking_station.capacity).to eq 20
+    end
+  end
+
   context "release bike function" do
 
     it {is_expected.to respond_to :release_bike}
@@ -26,7 +37,7 @@ describe DockingStation do
 
     it "should return error if trying to dock bike in a full docking station" do
       docking_station = DockingStation.new
-      DockingStation::DEFAULT_CAPACITY.times { docking_station.dock(Bike.new) }
+      docking_station.capacity.times { docking_station.dock(Bike.new) }
       expect{ docking_station.dock(Bike.new) }.to raise_error "Docking station is full"
     end
 
