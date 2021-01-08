@@ -1,4 +1,5 @@
 require "DockingStation"
+
 describe DockingStation do
 
   context "release bike function" do
@@ -17,7 +18,7 @@ describe DockingStation do
 
   end
   context "dock bike function" do
-    it " " do
+    it "" do
       bike = Bike.new
       subject.dock(bike)
       expect(subject.bike_storage).to include bike
@@ -25,7 +26,7 @@ describe DockingStation do
 
     it "should return error if trying to dock bike in a full docking station" do
       docking_station = DockingStation.new
-      20.times { docking_station.dock(Bike.new) }
+      DockingStation::DEFAULT_CAPACITY.times { docking_station.dock(Bike.new) }
       expect{ docking_station.dock(Bike.new) }.to raise_error "Docking station is full"
     end
 
