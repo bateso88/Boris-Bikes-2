@@ -7,9 +7,9 @@ describe DockingStation do
       docking_station = DockingStation.new(15)
     end
 
-    it "defaults to 20 spots" do
+    it "defaults to DEFAULT_CAPACITY spots" do
       docking_station = DockingStation.new
-      expect(docking_station.capacity).to eq 20
+      expect(docking_station.capacity).to eq DockingStation::DEFAULT_CAPACITY
     end
   end
 
@@ -29,10 +29,10 @@ describe DockingStation do
 
   end
   context "dock bike function" do
-    it "" do
+    it "Checks that bikes contains bike once bike has been docked" do
       bike = Bike.new
       subject.dock(bike)
-      expect(subject.bike_storage).to include bike
+      expect(subject.bikes).to include bike
     end
 
     it "should return error if trying to dock bike in a full docking station" do
