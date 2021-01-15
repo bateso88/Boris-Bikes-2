@@ -1,4 +1,4 @@
-require_relative 'Bike'
+require_relative 'bike'
 class DockingStation
 
   attr_reader :bikes
@@ -13,6 +13,7 @@ class DockingStation
 
   def release_bike
     raise "There is no bike" if empty?
+    raise "Bike is broken" if !@bikes[-1].working?
     @bikes.pop
   end
 
